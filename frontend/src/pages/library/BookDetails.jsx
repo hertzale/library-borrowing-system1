@@ -100,15 +100,27 @@ export default function BookDetails({ bookId, onClose, bookApi }) {
         </p>
       </div>
 
-      <div style={{
+            <div style={{
         marginTop: '30px',
         paddingTop: '20px',
         borderTop: '1px solid #ddd'
       }}>
         <h3>Borrowing Status</h3>
-        <p style={{ color: '#666', fontSize: '14px' }}>
-          Books currently borrowed from this title: {book.totalCopies - book.available}
-        </p>
+        <div style={{
+          background: '#f8f9fa',
+          padding: '15px',
+          borderRadius: '5px',
+          marginBottom: '10px'
+        }}>
+          <p style={{ margin: '0 0 10px 0', fontWeight: 'bold' }}>
+            Books Borrowed: {book.totalCopies - book.available} of {book.totalCopies}
+          </p>
+          <p style={{ color: '#666', fontSize: '14px', margin: 0 }}>
+            {book.available > 0
+              ? `${book.available} ${book.available === 1 ? 'copy' : 'copies'} available for borrowing`
+              : 'No copies available at this time'}
+          </p>
+        </div>
       </div>
 
       <button
